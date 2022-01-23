@@ -42,12 +42,15 @@ int main(int argc, char * argv[]){
     p = get_pixel_image(I,3,2);
     printf("la couleur du pixel à la position (3,2) est %d\n", p);
 
-
+    printf("mdr\n");
     Pixel p2 = get_pixel_image(I,20,2);
     printf("la couleur du pixel en dehors de l'image est %d\n", p2);
 
     set_pixel_image(I,20,2, NOIR);
     printf("la couleur du pixel en dehors de l'image est %d\n", p2);
+
+    set_pixel_image(I,20,2, BLANC);
+    printf("la couleur du pixel à la position (3,2) modifié est %d\n", p2);
     return 0;
 
 }
