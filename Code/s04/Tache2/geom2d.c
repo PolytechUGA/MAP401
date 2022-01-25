@@ -38,7 +38,7 @@ double produit_scalaire (Vecteur V1, Vecteur V2){
     return V1.x*V2.x + V1.y*V2.y;
 }
 
-
+//ALBIN CHANGE
 
 Vecteur vect_bipoint ( Point A, Point B){
     Vecteur V = {B.x-A.x , B.y-A.y } ;
