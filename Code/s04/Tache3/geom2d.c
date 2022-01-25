@@ -48,4 +48,6 @@ double distance_entre_points(Point P1, Point P2){
 }
 
 
-
+int Points_egaux(Point P1, Point P2){
+    return (P1.x == P2.x && P1.y == P2.y);
+}
