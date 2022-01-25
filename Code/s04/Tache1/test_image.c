@@ -19,11 +19,16 @@ int main(int argc, char * argv[]){
     Image I;
     I = lire_fichier_image(argv[1]);    
     Pixel p = get_pixel_image(I,3,2);
-    printf("la couleur du pixel à la position (3,2) est %d\n", p);
+    if (p==1){
+        printf("Get_pixel_image OK\n");
+        printf("la couleur du pixel à la position (3,2) est %d\n", p);
+    } else {
+        printf(" Pb execution fonction Get_pixel_image\n");
+    }
     printf("lecture OK \n");    
     if(I.H == hauteur_image (I))
         printf("La hauteur de l'image est OK \n");
-    else 
+    else
         printf("La hauteur de l'image est INCORRECT \n");
     if(I.L == largeur_image (I))
         printf("La largeur de l'image est OK \n");
@@ -42,15 +47,19 @@ int main(int argc, char * argv[]){
     p = get_pixel_image(I,3,2);
     printf("la couleur du pixel à la position (3,2) est %d\n", p);
 
-    printf("mdr\n");
     Pixel p2 = get_pixel_image(I,20,2);
     printf("la couleur du pixel en dehors de l'image est %d\n", p2);
 
     set_pixel_image(I,20,2, NOIR);
+    if (p2==0){
+        printf("Set_pixel_image OK\n");
+        printf("la couleur du pixel à la position (20,2) est %d\n", p2);
+    } else {
+        printf(" Pb execution fonction Set_pixel_image\n");
+    }
     printf("la couleur du pixel en dehors de l'image est %d\n", p2);
 
     set_pixel_image(I,20,2, BLANC);
     printf("la couleur du pixel à la position (3,2) modifié est %d\n", p2);
     return 0;
-
 }
