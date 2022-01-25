@@ -24,6 +24,18 @@ Vecteur add_vecteur ( Vecteur V1, Vecteur V2){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 Point Produit_avec_un_reel_point ( double a, Point P){
     return set_point ( a* P.x, a* P.y);
 }
