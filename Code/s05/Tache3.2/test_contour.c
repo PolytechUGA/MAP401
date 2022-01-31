@@ -14,7 +14,6 @@ int main(int argc, char **argv){
         printf(" Problème d'ouverture du fichier de sortie \n");
         return -2;
     }
-    printf("avant calcul contour \n");
     L = calcul_contour(I);
     ecrire_contour_fichier(L , f_out);
     fclose (f_out);

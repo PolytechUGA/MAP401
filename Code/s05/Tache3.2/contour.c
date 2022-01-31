@@ -119,11 +119,15 @@ Liste_Point calcul_contour(Image I){
     return L;
 }
 
+int nombre_segment( Liste_Point L){
+    return L.taille-1;
+}
+
 
 void ecrire_contour_fichier( Liste_Point L, FILE *f){
     int nb_contours = 1;
-    fprintf(f, "%d\n", nb_contours);
-    fprintf(f, "%d\n\n", L.taille);
+    fprintf(f, "%d\n\n", nb_contours);
+    fprintf(f, "%d\n", nombre_segment(L));
     Cellule_Liste_Point *tmp;
     for (tmp = L.first; tmp->suiv != NULL; tmp = tmp->suiv){
         fprintf(f, " %f %f\n", tmp->data.x, tmp->data.y);
@@ -228,6 +232,3 @@ void ecrire_contour(Liste_Point L)
     free (TP.tab );
 }
 
-int nombre_segment( Liste_Point L){
-    return L.taille-1;
-}

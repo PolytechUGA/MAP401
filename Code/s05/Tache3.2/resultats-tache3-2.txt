@@ -1,0 +1,58 @@
+1e = largeur 
+2e hauteur 
+
+
+Image : chat.pbm
+Dimensions : 
+    Largeur : 250
+    Hauteur : 140
+Nombre de segments : 880
+
+
+Image : coq.pbm
+Dimensions : 
+    Largeur : 700
+    Hauteur : 702
+Nombre de segments : 5386
+
+
+Image : elephant.pbm
+Dimensions : 
+    Largeur : 800
+    Hauteur : 700
+Nombre de segments : 5344
+
+
+Image : gymnaste.pbm
+Dimensions : 
+    Largeur : 1056
+    Hauteur : 1647
+Nombre de segments : 8784
+
+
+Image : labyrinthe.pbm
+Dimensions : 
+    Largeur : 221
+    Hauteur : 201
+Nombre de segments : 44000
+
+
+Image : lettreZ.pbm
+Dimensions : 
+    Largeur : 600
+    Hauteur : 1029
+Nombre de segments : 9396
+
+
+Image : map401.pbm
+Dimensions : 
+    Largeur : 830
+    Hauteur : 300
+Nombre de segments : 8072
+
+
+Image : tete.pbm
+Dimensions : 
+    Largeur : 1252
+    Hauteur : 1252
+Nombre de segments : 8136
