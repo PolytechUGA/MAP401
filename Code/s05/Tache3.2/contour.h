@@ -74,5 +74,7 @@ void ecrire_contour(Liste_Point L);
 
 void ecrire_contour_fichier( Liste_Point L, FILE *f);
 
+int nombre_segment( Liste_Point L);
+
 
 #endif

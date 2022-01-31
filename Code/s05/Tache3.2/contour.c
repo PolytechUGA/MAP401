@@ -108,16 +108,13 @@ Liste_Point calcul_contour(Image I){
     position = P_init;
 
     while ( Boucle == 1){
-        // affiche_pos(position);
         L = ajouter_element_liste_Point(L , position);
         position = avancer(Orient, position);
         Orient = nouvelle_orientation(I, position, Orient);
-        // Boucle++;
         if (Points_egaux(position, P_init) && Orient == EST){
             Boucle = 0;
         }
     }
-    // affiche_pos(position);
     L = ajouter_element_liste_Point(L , position);
     return L;
 }

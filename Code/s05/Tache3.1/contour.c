@@ -110,7 +110,6 @@ void calcul_contour(Image I){
         affiche_pos(position);
         position = avancer(Orient, position);
         Orient = nouvelle_orientation(I, position, Orient);
-        // Boucle++;
         if (Points_egaux(position, P_init) && Orient == EST){
             Boucle = 0;
         }

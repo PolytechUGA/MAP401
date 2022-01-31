@@ -8,12 +8,13 @@ int main(int argc, char **argv){
     Image I;
     Liste_Point L;
     I = lire_fichier_image(argv[1]);
-    FILE *f_out; 
-    fopen(f_out, "w");
+    FILE *f_out = NULL; 
+    f_out = fopen(argv[2], "w");
     if( f_out == NULL){
         printf(" Problème d'ouverture du fichier de sortie \n");
         return -2;
     }
+    printf("avant calcul contour \n");
     L = calcul_contour(I);
     ecrire_contour_fichier(L , f_out);
     fclose (f_out);
