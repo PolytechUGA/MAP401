@@ -253,3 +253,50 @@ void ecriture_fichier_EPS(FILE *f, int mode, Image Image, Liste_Point L){
     }
     fprintf(f, "showpage\n");
 }
+
+Liste_Point all_pixels_valides(Image I){
+    Liste_Point L;
+    for (double i = 1 ; i<= hauteur_image(I); i++){
+        for (double k  = 1 ; k <= largeur_image(I); k++){
+            if (i==1 && get_pixel_image(I, k, i) == NOIR){
+                L = ajouter_element_liste_Point (L, set_point(k,i));
+            }
+            else if (get_pixel_image(I, k, i) == NOIR && get_pixel_image(I, k, i-1) == BLANC){
+                L = ajouter_element_liste_Point (L, set_point(k,i));
+            }
+        }
+    }
+    return L;
+}
+
+
+Image cree_image_masque(Image I){
+    Image I_masque = creer_image( largeur_image (I), hauteur_image (I));
+    Liste_Point L;
+    L = all_pixels_valides(I);
+    Cellule_Liste_Point *cel= L.first;
+    while (cel->suiv!= NULL){
+        set_pixel_image(I_masque, cel->data.x,cel->data.y, NOIR );
+        cel = cel->suiv;
+    }
+    return I_masque;
+}
+
+void etape2deletape1(Image I, Image I_Masque){
+    int nb_contours = 0;
+    int nb_segments = 0;
+    Point first_pixel= set_point(0,0);
+    Liste_Point L;
+    for (double i = 1 ; i<= hauteur_image(I); i++){
+        for (double k  = 1 ; k <= largeur_image(I); k++){
+            if (get_pixel_image(I, k, i) == NOIR){
+                L = calcul_contour(I);
+                nb_contours++;
+                nb_segments = nb_segments + nombre_segment(L);
+            }
+        }
+    }
+
+}
+
+
