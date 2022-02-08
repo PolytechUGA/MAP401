@@ -1,4 +1,4 @@
-#include "contour.h"
+#include "calcul_contour.h"
 
 Orientation tourner_a_gauche(Orientation Orient){
     switch (Orient){
@@ -124,138 +124,10 @@ int nombre_segment( Liste_Point L){
 }
 
 
-void ecrire_contour_fichier( Liste_Point L, FILE *f){
-    int nb_contours = 1;
-    fprintf(f, "%d\n\n", nb_contours);
-    fprintf(f, "%d\n", nombre_segment(L));
-    Cellule_Liste_Point *tmp;
-    for (tmp = L.first; tmp->suiv != NULL; tmp = tmp->suiv){
-        fprintf(f, " %f %f\n", tmp->data.x, tmp->data.y);
-    }
-}
 
-Cellule_Liste_Point *creer_element_liste_Point(Point v)
-{
-    Cellule_Liste_Point *el ;
-    el = (Cellule_Liste_Point *)malloc(sizeof(Cellule_Liste_Point )); 
-    if (el==NULL){
-        fprintf (stderr , "creer_element_liste_Point : allocation impossible\n");
-        exit (-1); 
-    }
-    el->data = v; 
-    el->suiv = NULL; 
-    return el ;
-}
-
-// } Liste Point ;
-
-Liste_Point creer_liste_Point_vide()
-{
-    Liste_Point L = {0, NULL, NULL}; 
-    return L ;
-}
-
-Liste_Point ajouter_element_liste_Point(Liste_Point L, Point e)
-{
-    Cellule_Liste_Point *el ;
-    el = creer_element_liste_Point(e); 
-    if (L.taille == 0)
-    {
-        L.first = L.last = el;
-    }
-    else
-    {
-        L.last->suiv = el; L.last = el;
-    }
-    L. taille++;
-    return L ; 
-}
-
-Liste_Point supprimer_liste_Point(Liste_Point L)
-{
-    Cellule_Liste_Point *el=L.first ;
-    while (el){
-        Cellule_Liste_Point *suiv = el->suiv;
-        free(el);
-        el=suiv;
-    }
-
-    L.first =L.last =NULL; 
-    L.taille = 0;
-    return L ;
-}
-
-Liste_Point concatener_liste_Point(Liste_Point L1, Liste_Point L2)
-{
-
-    if (L1.taille == 0) return L2; 
-    if (L2.taille == 0) return L1;
-    L1.last->suiv = L2.first ;
-    L1.last = L2.last ;  
-    L1.taille += L2.taille ; 
-    return L1;
-}
-
-Tableau_Point sequence_points_liste_vers_tableau(Liste_Point L)
-{
-    Tableau_Point T;
-    T.taille = L.taille ;
-    T.tab = malloc(sizeof(Point) * T.taille );
-    if (T.tab==NULL)
-    {
-        fprintf(stderr, "sequence_points_liste_vers_tableau : ");
-        fprintf(stderr , " allocation impossible\n");
-        exit (-1);
-    }
-    int k = 0;
-    Cellule_Liste_Point *el = L.first ;
-    while (el)
-    {
-    T.tab[k] = el->data; k++;
-    el = el->suiv;
-    }
-    return T;
-}
-
-void ecrire_contour(Liste_Point L)
-{
-    Tableau_Point TP = sequence_points_liste_vers_tableau(L);
-    int k;
-    int nP = TP.taille ;
-    printf("%d points : [", nP); 
-    for (k = 0; k < nP; k++)
-    {
-        Point P = TP.tab[k];
-        printf(" (%5.1f,%5.1f)", P.x, P.y);
-    }
-    printf( " ] \n" ) ;
-    free (TP.tab );
-}
-
-
-void ecriture_fichier_EPS(FILE *f, int mode, Image Image, Liste_Point L){
-    fprintf( f, "%c!PS-Adobe-3.0 EPSF-3.0\n", '%');
-    fprintf( f, "%c%cBoundingBox 0 0 %d %d \n",'%','%', largeur_image(Image), hauteur_image(Image));
-    Point first_point = set_point(L.first->data.x, L.first->data.y);
-    fprintf(f, "%f %f moveto ", first_point.x, hauteur_image(Image) - first_point.y);
-    // Point p;
-    for (Cellule_Liste_Point *tmp = L.first; tmp->suiv != NULL; tmp = tmp->suiv){
-
-        fprintf(f, "%f %f lineto \n", tmp->suiv->data.x, hauteur_image(Image) - tmp->suiv->data.y);
-    }
-    switch(mode){
-        case STROKE:
-            fprintf(f, "stroke\n");
-            break;
-        case FILL:
-            fprintf(f, "fill\n");
-            break;
-    }
-    fprintf(f, "showpage\n");
-}
 
 Liste_Point all_pixels_valides(Image I){
-    Liste_Point L;
+    Liste_Point L = creer_liste_Point_vide();
     for (double i = 1 ; i<= hauteur_image(I); i++){
         for (double k  = 1 ; k <= largeur_image(I); k++){
             if (i==1 && get_pixel_image(I, k, i) == NOIR){
@@ -271,7 +143,7 @@ Liste_Point all_pixels_valides(Image I){
 
 
 Image cree_image_masque(Image I){
-    Image I_masque = creer_image( largeur_image (I), hauteur_image (I));
+    Image I_masque   = creer_image(largeur_image (I), hauteur_image (I));
     Liste_Point L;
     L = all_pixels_valides(I);
     Cellule_Liste_Point *cel= L.first;
@@ -284,19 +156,7 @@ Image cree_image_masque(Image I){
 
 
 
-void ecrire_contour_fichier( Liste_Point L, FILE *f){
-    int nb_contours = 1;
-    fprintf(f, "%d\n\n", nb_contours);
-    fprintf(f, "%d\n", nombre_segment(L));
-    Cellule_Liste_Point *tmp;
-    for (tmp = L.first; tmp->suiv != NULL; tmp = tmp->suiv){
-        fprintf(f, " %f %f\n", tmp->data.x, tmp->data.y);
-    }
-}
-
-
-
-Liste_Point calcul_contour_I_masque(Image I, Image I_Masque, double i, double k){
+Liste_Point calcul_contour_I_masque(Image I, Image I_Masque, double k, double i){
     Point Pix, P_init, position;
     Liste_Point L = creer_liste_Point_vide();
     int Boucle;
@@ -321,23 +181,48 @@ Liste_Point calcul_contour_I_masque(Image I, Image I_Masque, double i, double k)
 }
 
 
-void ecriture_des_contours(Image I, Image I_Masque){
-    int nb_contours = 0;
-    int nb_segments = 0;
-    Point first_pixel= set_point(0,0);
-    Liste_Point L;
-    for (double i = 1 ; i<= hauteur_image(I); i++){
-        for (double k  = 1 ; k <= largeur_image(I); k++){
+// void ecriture_des_contours(Image I, Image I_Masque){
+//     int nb_contours = 0;
+//     int nb_segments = 0;
+//     Point first_pixel= set_point(0,0);
+//     Liste_Contour Liste_Contour;
+//     Liste_Point L_Point;
+//     for (double i = 1 ; i<= hauteur_image(I); i++){
+//         for (double k  = 1 ; k <= largeur_image(I); k++){
+//             if (get_pixel_image(I_Masque, k, i) == NOIR){
+//                 L_Point = calcul_contour_I_masque(I, I_Masque, k, i);
+//                 ajouter_element_liste_Contour(Liste_Contour, L_Point);
+//                 nb_contours++;
+//                 nb_segments = nb_segments + nombre_segment(L_Point);
+//             }
+//         }
+//     }
+//     // nb contours 
+//     // nb segment dans le contour 
+//     // contour 
+
+// }
+
+
+Liste_Contour extraction_des_contours(Image I, Image I_Masque){
+    // Point first_pixel= set_point(0,0);
+    Liste_Contour L_Contour = creer_liste_Contour_vide();
+    Liste_Point L_Point = creer_liste_Point_vide();
+    int l,h;
+    h = hauteur_image(I);
+    l = largeur_image(I);
+    for (double i = 1 ; i<= h; i++){
+        for (double k  = 1 ; k <= l; k++){
             if (get_pixel_image(I_Masque, k, i) == NOIR){
-                L = calcul_contour_I_masque(I, I_Masque, k, i);
-                nb_contours++;
-                nb_segments = nb_segments + nombre_segment(L);
-                // concatene L dans L_generale
+                L_Point = calcul_contour_I_masque(I, I_Masque, k, i);
+                L_Contour = ajouter_element_liste_Contour(L_Contour, L_Point);
             }
         }
     }
-    // for 
-
+    return L_Contour;
 }
+
+
+
 
 

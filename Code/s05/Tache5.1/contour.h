@@ -55,19 +55,7 @@ typedef struct Liste_Point_
 typedef Liste_Point Contour;
 
 
-// typedef struct Cellule_Liste_Contour_
-// {
-//     Contour contour;
-//     struct Cellule_Liste_Contour_ *suiv;
-// } Cellule_Liste_Contour;
 
-
-
-// typedef struct Liste_Contour_
-// {
-//    unsigned int nb_contour ;
-//    Cellule_Liste_Contour *tete ; 
-// } Liste_Contour;
 
 typedef struct Tableau_Point_
 {
