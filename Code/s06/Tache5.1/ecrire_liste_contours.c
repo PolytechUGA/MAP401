@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include "calcul_contour.h"
 #include "sortie_EPS.h"
@@ -39,8 +38,8 @@ int main(int argc , char *argv[]){
     ecrire_contour_fichier_contours(L, f_txt);
 
     // Partie 2
-
-
+    
+    
 
     //ecriture_fichier_EPS(f_out,mode, I, L);
     fclose (f_txt);
