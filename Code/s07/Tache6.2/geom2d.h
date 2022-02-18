@@ -43,6 +43,9 @@ double norme_vecteur (Vecteur V);
 // vecteur correspondant au bipoint AB ∗/
 Vecteur vect_bipoint ( Point A, Point B ) ;
 
+
+Point point_bipoint ( Point A, Point B);
+
 // distance entre P1 et P2
 double distance_entre_points(Point P1, Point P2);
 

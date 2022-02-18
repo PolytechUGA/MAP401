@@ -37,6 +37,11 @@ Vecteur vect_bipoint ( Point A, Point B){
     return V;
 }
 
+Point point_bipoint ( Point A, Point B){
+    Point V = {B.x-A.x , B.y-A.y } ;
+    return V;
+}
+
 double norme_vecteur (Vecteur V){
     return sqrt((V.x*V.x)  +  (V.y*V.y));
 }
