@@ -33,6 +33,10 @@ int main (int argc, char* argv[]){
         printf (" taille :%d \n", tmp_contour->contour.taille);
         tmp_contour->contour = algo_Douglas_Peucker(tmp_contour->contour , 0, tmp_contour->contour.taille, d);
     }
+
+    // Pb avec les moveto qui ne fonctionne pas
+
+
     // 
     // for (int i=1; i<L.nb_contour; i++){
     //     cel->contour = algo_Douglas_Peucker(cel->contour , 0, 1, d);
