@@ -2,6 +2,9 @@
 #define _GEOM2D_H_
 
 #include <stdio.h>
+#include <math.h>
+// probleme 
+
 
 typedef struct Vecteur {
     double x , y ; // coordonnees
@@ -76,5 +79,20 @@ Point C_Bezier3(Bezier3 B, double t);
 
 Bezier3 Conversion_B2_B3(Bezier2 B);
 
+Bezier2 approx_bezier2(Tableau_Point L, int j1, int j2);
+
+double calcul_alpha( double n );
+
+double calcul_beta(double n);
+
+double calcul_lamda(double n);
+
+double calcul_gama(double k, double n);
+
+Bezier3 approx_bezier3(Tableau_Point L, int j1, int j2);
+
+double distance_point_bezier2(Point Pj, Bezier2 B, double ti);
+
+double distance_point_bezier3(Point Pj, Bezier3 B, double ti);
 
 #endif
