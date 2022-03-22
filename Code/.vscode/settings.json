@@ -3,6 +3,7 @@
         "ecriture_contours.h": "c",
         "image.h": "c",
         "calcul_contour.h": "c",
-        "douglas-peucker.h": "c"
+        "douglas-peucker.h": "c",
+        "douglas_peucker.h": "c"
     }
 }

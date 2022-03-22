@@ -53,4 +53,7 @@ int Points_egaux(Point P1, Point P2);
 
 double distance_point_segment(Point P, Point A, Point B);
 
+
+
+
 #endif

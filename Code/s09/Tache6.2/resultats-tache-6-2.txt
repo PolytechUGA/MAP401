@@ -1,0 +1,51 @@
+image_poly_tache6.pbm :
+d=1:
+Nombre de contours : 3 
+Nombre de segments : 68 
+d=2:
+Nombre de contours : 3 
+Nombre de segments : 44
+
+
+elephant-gotlib.pbm:
+d=1:
+Nombre de contours : 313 
+Nombre de segments : 13189
+d=2:
+Nombre de contours : 313
+Nombre de segments : 4281
+
+goudyini-A.pbm:
+d=1:
+Nombre de contours : 258 
+Nombre de segments : 5335
+d=2:
+Nombre de contours : 258 
+Nombre de segments : 2713 
+
+JoaquimHock-LesArbres.pbm:
+init:
+
+d=1:
+Nombre de contours : 543 
+Nombre de segments : 26572
+d=2:
+Nombre de contours : 543 
+Nombre de segments : 13090 
+
+cheval.pbm: 
+d=1:
+Nombre de contours : 59 
+Nombre de segments : 3157
+d=2:
+Nombre de contours : 59 
+Nombre de segments : 1381
+
+
+papillon2.pbm:
+d=1:
+Nombre de contours : 140 
+Nombre de segments : 1913 
+d=2:
+Nombre de contours : 140 
+Nombre de segments : 1037 
