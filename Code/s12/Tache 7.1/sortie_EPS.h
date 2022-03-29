@@ -12,5 +12,7 @@ void ecriture_fichier_EPS(FILE *f, int mode, Image Image, Liste_Point L);
 
 void ecriture_fichier_EPS_tache5(FILE *f, int mode, Image Image, Liste_Contour L);
 
+void ecriture_fichier_EPS_bezier3(FILE *f, int mode, Image Image, Liste_Contour L);
+
 
 #endif

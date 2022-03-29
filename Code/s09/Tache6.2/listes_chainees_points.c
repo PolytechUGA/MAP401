@@ -56,7 +56,7 @@ Liste_Point concatener_liste_Point(Liste_Point L1, Liste_Point L2)
 
     if (L1.taille == 0) return L2; 
     if (L2.taille == 0) return L1;
-    L1.last->suiv = L2.first->suiv ; // a la place de L2.first
+    L1.last->suiv = L2.first ; // a la place de L2.first
     L1.last = L2.last ;  
     L1.taille += L2.taille ; 
     return L1;

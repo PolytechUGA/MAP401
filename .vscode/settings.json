@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "geom2d.h": "c",
+        "listes_chainees_points.h": "c"
+    }
+}

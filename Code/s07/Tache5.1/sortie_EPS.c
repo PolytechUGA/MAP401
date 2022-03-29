@@ -33,7 +33,7 @@ void ecriture_fichier_EPS_tache5(FILE *f, int mode, Image Image, Liste_Contour L
     fprintf( f, "%c%cBoundingBox 0 0 %d %d \n",'%','%', largeur_image(Image), hauteur_image(Image));
 
 
-    for (Cellule_Liste_Contour *tmp_contour = L.first; tmp_contour != NULL ; tmp_contour = tmp_contour->suiv){
+    for (Cellule_Liste_Contour *tmp_contour = L.first; tmp_contour->suiv != NULL ; tmp_contour = tmp_contour->suiv){
         Point first_point = set_point(tmp_contour->contour.first->data.x, tmp_contour->contour.first->data.y);
         fprintf(f, "%f %f moveto ", first_point.x, hauteur_image(Image) - first_point.y);
         for (Cellule_Liste_Point *tmp = tmp_contour->contour.first; tmp->suiv != NULL; tmp = tmp->suiv){
