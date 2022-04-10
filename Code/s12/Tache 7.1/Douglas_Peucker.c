@@ -33,18 +33,18 @@ Liste_Point algo_Douglas_Peucker(Liste_Point C, int j1, int j2, double d){
     return L;
 }
 
-Liste_Point simplification_douglas_peucker_bezier2(Tableau_Point CONT, int j1, int j2, int d){
-    Liste_Point L= creer_liste_Point_vide();
-    double n = (double) j2 - j1; // nb de segments de CONT entre j1 et j2
-    Bezier2 B = approx_bezier2(CONT, j1, j2);
-    double dmax = 0;
+Liste_Bezier3 simplification_douglas_peucker_bezier2(Tableau_Point CONT, int j1, int j2, double d){
+    Liste_Bezier3 L= creer_liste_Bezier3_vide();
+    double dmax = 0.0;
+    double dj;
     int k = j1;
+    double n = (double) (j2 - j1);
+    Bezier2 B = approx_bezier2(CONT, j1, j2);
     int i;
     double ti;
-    double dj;
     for (int j = j1+1; j<=j2; j++){
         i = j - j1;
-        ti = ((double)(i))/((double)(n));
+        ti = (double)((double)(i))/((double)(n));
         dj = distance_point_bezier2(CONT.tab[j], B, ti);
         if (dmax<dj){
             dmax = dj;
@@ -53,19 +53,42 @@ Liste_Point simplification_douglas_peucker_bezier2(Tableau_Point CONT, int j1, i
     }
     if (dmax<=d){
         Bezier3 B3 = Conversion_B2_B3(B);
-        L = ajouter_element_liste_Point(L, B3.C0);
-        L = ajouter_element_liste_Point(L, B3.C1);
-        L = ajouter_element_liste_Point(L, B3.C2);
-        L = ajouter_element_liste_Point(L, B3.C3);
+        L = ajouter_element_liste_Bezier3(L, B3);
     }
     else {
-        Liste_Point L1 = simplification_douglas_peucker_bezier2( CONT, j1, k, d);
-        Liste_Point L2 = simplification_douglas_peucker_bezier2( CONT, k, j2, d);
-        Cellule_Liste_Point *cel = L2.first;
-        L2.first = L2.first->suiv;
-        L2.taille = L2.taille-1;
-        free(cel);
-        L = concatener_liste_Point (L1,L2);
+        Liste_Bezier3 L1 = simplification_douglas_peucker_bezier2( CONT, j1, k, d);
+        Liste_Bezier3 L2 = simplification_douglas_peucker_bezier2( CONT, k, j2, d);
+        L = concatener_liste_Bezier3 (L1,L2);
+    }
+    return L;
+}
+
+
+Liste_Bezier3 simplification_douglas_peucker_bezier3(Tableau_Point CONT, int j1, int j2, double d){
+    Liste_Bezier3 L= creer_liste_Bezier3_vide();
+    double dmax = 0.0;
+    double dj;
+    int k = j1;
+    double n = (double) (j2 - j1);
+    Bezier3 B = approx_bezier3(CONT, j1, j2);
+    int i;
+    double ti;
+    for (int j = j1+1; j<=j2; j++){
+        i = j - j1;
+        ti = (double)((double)(i))/((double)(n));
+        dj = distance_point_bezier3(CONT.tab[j], B, ti);
+        if (dmax<dj){
+            dmax = dj;
+            k = j;
+        }
+    }
+    if (dmax<=d){
+        L = ajouter_element_liste_Bezier3(L, B);
+    }
+    else {
+        Liste_Bezier3 L1 = simplification_douglas_peucker_bezier3( CONT, j1, k, d);
+        Liste_Bezier3 L2 = simplification_douglas_peucker_bezier3( CONT, k, j2, d);
+        L = concatener_liste_Bezier3 (L1,L2);
     }
     return L;
 }

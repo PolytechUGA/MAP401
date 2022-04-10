@@ -37,7 +37,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
 # liste des executables
-EXECUTABLES = distance_pts_seg ecrire_liste_contours simplification_par_segment simplification_par_bezier2
+EXECUTABLES = distance_pts_seg ecrire_liste_contours simplification_par_segment simplification_par_bezier2 test1.1_tache7 test2.1_tache7 simplification_par_bezier3
 
 
 #############################################################################
@@ -108,6 +108,20 @@ listes_chainees_contours.o : listes_chainees_contours.c listes_chainees_contours
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
+listes_chainees_bezier.o : listes_chainees_bezier.c listes_chainees_bezier.h courbe_bezier.h types_macros.h image.h geom2d.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module listes_chainees_bezier"
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+liste_contour_bezier.o : liste_contour_bezier.c liste_contour_bezier.h types_macros.h image.h geom2d.h courbe_bezier.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module listes_chainees_bezier"
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
 sortie_EPS.o : sortie_EPS.c sortie_EPS.h types_macros.h image.h calcul_contour.h listes_chainees_points.h
 	@echo ""
 	@echo "---------------------------------------------"
@@ -129,7 +143,7 @@ ecrire_liste_contours.o : ecrire_liste_contours.c calcul_contour.h
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
-Douglas_Peucker.o : Douglas_Peucker.c Douglas_Peucker.h geom2d.h listes_chainees_points.h courbe_bezier.h
+Douglas_Peucker.o : Douglas_Peucker.c Douglas_Peucker.h geom2d.h listes_chainees_points.h courbe_bezier.h listes_chainees_bezier.h
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module Douglas_Peucker  "
@@ -150,10 +164,31 @@ distance_pts_seg.o : distance_pts_seg.c geom2d.h
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
-simplification_par_bezier2.o : simplification_par_bezier2.c Douglas_Peucker.h image.h listes_chainees_contours.h calcul_contour.h sortie_EPS.h ecriture_contours.h geom2d.h listes_chainees_points.h
+simplification_par_bezier2.o : simplification_par_bezier2.c Douglas_Peucker.h image.h listes_chainees_contours.h calcul_contour.h sortie_EPS.h ecriture_contours.h geom2d.h listes_chainees_bezier.h liste_contour_bezier.h
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module simplification_par_bezier2  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+simplification_par_bezier3.o : simplification_par_bezier3.c Douglas_Peucker.h image.h listes_chainees_contours.h calcul_contour.h sortie_EPS.h ecriture_contours.h geom2d.h listes_chainees_bezier.h liste_contour_bezier.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module simplification_par_bezier2  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test1.1_tache7.o : test1.1_tache7.c calcul_contour.h geom2d.h listes_chainees_points.h courbe_bezier.h image.h listes_chainees_contours.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test2.1_tache7.o : test2.1_tache7.c calcul_contour.h geom2d.h listes_chainees_points.h courbe_bezier.h image.h listes_chainees_contours.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
@@ -177,19 +212,43 @@ ecrire_liste_contours : ecrire_liste_contours.o ecriture_contours.o image.o geom
 	$(CC) $^ $(LDOPTS) -o $@
 
 
-simplification_par_segment : simplification_par_segment.o Douglas_Peucker.o image.o listes_chainees_contours.o calcul_contour.o sortie_EPS.o ecriture_contours.o geom2d.o listes_chainees_points.o courbe_bezier.o
+simplification_par_segment : simplification_par_segment.o Douglas_Peucker.o image.o listes_chainees_contours.o calcul_contour.o sortie_EPS.o ecriture_contours.o geom2d.o listes_chainees_points.o courbe_bezier.o listes_chainees_bezier.o
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
 	@echo "---------------------------------------------"
 	$(CC) $^ $(LDOPTS) -o $@
 
-simplification_par_bezier2 : simplification_par_bezier2.o Douglas_Peucker.o image.o listes_chainees_contours.o calcul_contour.o sortie_EPS.o ecriture_contours.o geom2d.o listes_chainees_points.o courbe_bezier.o
+simplification_par_bezier2 : simplification_par_bezier2.o Douglas_Peucker.o image.o listes_chainees_contours.o calcul_contour.o sortie_EPS.o ecriture_contours.o geom2d.o listes_chainees_points.o courbe_bezier.o listes_chainees_bezier.o liste_contour_bezier.o
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@
 	@echo "---------------------------------------------"
 	$(CC) $^ $(LDOPTS) -o $@
+
+test1.1_tache7 : test1.1_tache7.o calcul_contour.o geom2d.o listes_chainees_points.o courbe_bezier.o image.o listes_chainees_contours.o
+
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+test2.1_tache7 : test2.1_tache7.o calcul_contour.o geom2d.o listes_chainees_points.o courbe_bezier.o image.o listes_chainees_contours.o
+
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+simplification_par_bezier3 : simplification_par_bezier3.o Douglas_Peucker.o image.o listes_chainees_contours.o calcul_contour.o sortie_EPS.o ecriture_contours.o geom2d.o listes_chainees_points.o courbe_bezier.o listes_chainees_bezier.o liste_contour_bezier.o
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
 
 # regle pour "nettoyer" le r�pertoire
 clean:

@@ -82,3 +82,4 @@ Tableau_Point sequence_points_liste_vers_tableau(Liste_Point L)
     }
     return T;
 }
+

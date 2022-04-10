@@ -22,7 +22,7 @@ Point C_Bezier2(Bezier2 B, double t){
     coef2 = t*t;
 
     P1 = Produit_avec_un_reel_point(coef0, B.C0);
-    P2 = Produit_avec_un_reel_point(coef1, B.C1 );
+    P2 = Produit_avec_un_reel_point(coef1, B.C1);
     P3 = Produit_avec_un_reel_point(coef2, B.C2);
     R = add_point(P1, P2);
     R = add_point(R, P3);
@@ -46,7 +46,7 @@ Point C_Bezier3(Bezier3 B, double t){
     coef0 = (1-t)*(1-t)*(1-t);
     coef1 = 3*t*(1-t)*(1-t);
     coef2 = 3*t*t*(1-t);
-    coef3 = t*t;
+    coef3 = t*t*t;
 
     P0 = Produit_avec_un_reel_point(coef0, B.C0);
     P1 = Produit_avec_un_reel_point(coef1, B.C1);
@@ -64,29 +64,29 @@ Bezier3 Conversion_B2_B3(Bezier2 B){
 
     B3.C1 = Produit_avec_un_reel_point(2, B.C1);
     B3.C1 = add_point(B.C0, B3.C1);
-    B3.C1 = Produit_avec_un_reel_point(1/3, B3.C1);
+    B3.C1 = Produit_avec_un_reel_point(1.0/3.0, B3.C1);
 
     B3.C2 = Produit_avec_un_reel_point(2, B.C1);
     B3.C2 = add_point(B3.C2, B.C2);
-    B3.C2 = Produit_avec_un_reel_point(1/3, B3.C2);
+    B3.C2 = Produit_avec_un_reel_point(1.0/3.0, B3.C2);
 
-    B3.C3 = B3.C2;
+    B3.C3 = B.C2;
     return B3;
 }
 
 Bezier2 approx_bezier2(Tableau_Point L, int j1, int j2){
     double n = (double)(j2 - j1);
     Bezier2 B = cree_Bezier2();
+    B.C0 = L.tab[j1];
+    B.C2 = L.tab[j2];
     if (n == 1){
-        B.C0 = L.tab[j1];
-        B.C2 = L.tab[j2];
-        B.C1 = Produit_avec_un_reel_point(1/2, add_point(B.C0, B.C2));
+        B.C1 = Produit_avec_un_reel_point(1.0/2.0, add_point(B.C0, B.C2));
     }
     else {
-        double alpha = (3*n)/(n*n-1);
-        double beta = (1-2*n)/(2*(n+1));
+        double alpha = (double)(3*n)/(n*n-1);
+        double beta = (double)(1-2*n)/(2*(n+1));
         Point somme = set_point(0, 0);
-        for (int i = 1; i<n; i++){
+        for (int i = 1; i<n; i=i+1){
             somme = add_point(somme, L.tab[i+j1]);
         }
         B.C1 = add_point(Produit_avec_un_reel_point(alpha, somme), Produit_avec_un_reel_point(beta, add_point(L.tab[j1], L.tab[j2])));
@@ -124,12 +124,12 @@ double calcul_gama(double k, double n){
 Bezier3 approx_bezier3(Tableau_Point L, int j1, int j2){
     double n = (double) (j2 - j1);
     Bezier3 B = creer_Bezier3();
+    B.C0 = L.tab[j1];
+    B.C3 = L.tab[j2];
     if (n < 3 ){
         Bezier2 B2 = approx_bezier2(L, j1, j2);
         B = Conversion_B2_B3 (B2);
     } else {
-        B.C0 = L.tab[j1];
-        B.C3 = L.tab[j2];
         Point C1 = Produit_avec_un_reel_point(calcul_alpha(n),B.C0);
         Point somme = set_point(0, 0);
         for (int i = 1; i<n; i++){

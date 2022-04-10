@@ -4,6 +4,7 @@
         "image.h": "c",
         "calcul_contour.h": "c",
         "douglas-peucker.h": "c",
-        "douglas_peucker.h": "c"
+        "douglas_peucker.h": "c",
+        "listes_chainees_bezier.h": "c"
     }
 }

@@ -1,5 +1,5 @@
-#ifndef _LISTES_CHAINEES_H_
-#define _LISTES_CHAINEES_H_
+#ifndef _LISTES_CHAINEES_CONTOUR_H_
+#define _LISTES_CHAINEES_CONTOUR_H_
 
 #include <stdio.h>
 #include <stdlib.h>
