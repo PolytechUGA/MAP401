@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv){
     if(argc != 3){
-        printf("Erreur, vous devez entre une image en argument. \n");
+        printf("Erreur, 1/Image.pbm 2/Fichier de sortie \n");
         return -1;
     }
     Image I;

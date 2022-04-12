@@ -63,4 +63,5 @@ Tâche 5 : Extraction des contours d'une image
     points composants le contour. En entrant 3 arguments, on choisit de lancer l'executable de la Tâche 5.2 et
     ainsi d'écrire dans le fichier une image en format EPS.
 
-Tâche 6 : 
+Tâche 6 : Simplification de contour par segment
+    
