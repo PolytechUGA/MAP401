@@ -9,6 +9,8 @@
 #include "listes_chainees_points.h"
 #include "listes_chainees_bezier.h"
 #include "courbe_bezier.h"
+// Ce module a les memes fonctions que le precedent, adapte a des listes de listes de courbes
+// de bezier.
 
 typedef struct Cellule_Liste_Contour_bezier_
 {

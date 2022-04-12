@@ -1,0 +1,66 @@
+
+Tâche 1 : Module Image
+    Cette tâche nous à permis de nous familiariser avec les différents modules mis à notre disposition
+    tel quel le module image. Dans cette tâche, nous avons créer un module image dans lequel on trouve 
+    des fonctions permettant de calculer le négatif d’une image ainsi que d’écrire une image dans le terminal. 
+    Pour écrire une image, on parcours chaque pixels. Si le pixels est noir, on affiche un « X » et sinon,
+    le pixel est alors blanc. Dans ce cas, on affiche un espace. Pour la négation de l’image, on parcours 
+    chaque pixels. Si le pixels est noir, on le remplace par un 
+    pixel blanc. Sinon, on fait l’inverse. 
+
+    Nous avons aussi créer un programme de test pour ce module image nommé test_image. 
+    Il se lance grâce à la commande ./test_image image.pbm (où l’image.pbm représente 
+    l’image que l’on veut tester). Ce programme prend une image en paramètre et permet de vérifier 
+    si les fonctions du module image fonctionnent correctement.
+
+
+Tâche 2 : Module Geom2d
+
+    Pour réaliser cette tâche, nous avons créer un module geom2d qui permet la gestion de la géométrie. 
+    Ce module contient la définition des types Points et Vecteur ainsi que plusieurs fonctions permettant 
+    la gestion de ces éléments. Ces fonctions permettent d’effectuer des opérations avec ces deux types : 
+    Somme des vecteurs et des points, produit entre vecteurs et points, produit scalaire, la norme, 
+    la distance…
+
+    Nous avons aussi créer un programme de test pour ce module geom2d nommé ./test_geom. Il permet de  
+    tester les fonctions set_point, add_point, produit entre réel et points ou entre réels et vecteurs, 
+    vect_bipoint, norme_vecteur, distance_entre_points, produit_scalaire…
+
+
+Tâche 3 : Extraction de Contour
+
+    Pour cette tâche, nous avons créer un module calcul_contour qui permet la gestion des 
+    déplacements du robot sur l’image, la détection des pixels candidats pour le calcul du 
+    contour, la création et la gestion de l’Image de Masque ainsi que le stockage de ce contour 
+    dans une liste. Création module ecriture_contours pour gérer l'écriture des contours passé en
+    argument dans un fichier ou dans le terminal passé en argument Nous avons mis au point un module
+    pour gérer les listes chainees de points.
+
+    Pour tester cette tâche, nous avons implémenter un programme test_contour qui prend en 
+    argument une image et un fichier de sortie. Ce programme permet de calculer les contours de 
+    l’image entrée en argument et d’écrire le contour dans un fichier donné en second argument.
+
+Tâche 4 : Sortie au format PostScript encapsulé
+
+    Dans cette tâche, il est question de créer un programme qui va mettre l'image sous forme 
+    EPS (Encapsulated PostScript), pour pouvoir l'afficher avec la commande gv. Pour cela, nous 
+    avons créer un module sortie_EPS qui nous permet de gérer toutes les fontions relatives aux format EPS.
+    
+
+    Pour tester notre programme, nous avons créé test_EPS qui prend en argument une image en .pbm
+    et un fichier de sortie et écrit dedans l'image sous forme EPS. L'éxecutable affiche aussi le
+    nombre de segment de l'image. 
+
+Tâche 5 : Extraction des contours d'une image
+    
+    Pour répondre à la question de la tâche 5, nous avons mis à jour les modules calcul_contour et 
+    sortie_EPS pour permettre de mettre  dans une liste de contours tout les contours d'une image 
+    et de gérer l'affichage dans un fichier, dans un terminal et la sortie EPS.
+
+    L'executable de la tâche 5 est ecrire_liste_contours. Il permet d'écrire dans un fichier une 
+    image en format EPS à partir de la liste des contours d'une image. Pour la tâche 5.1 on l'appelle 
+    avec 2 arguments. On affiche alors dans le fichier passé en argument les coordonnées de tout les
+    points composants le contour. En entrant 3 arguments, on choisit de lancer l'executable de la Tâche 5.2 et
+    ainsi d'écrire dans le fichier une image en format EPS.
+
+Tâche 6 : 

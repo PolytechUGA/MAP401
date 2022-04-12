@@ -80,7 +80,10 @@ int main (int argc, char* argv[]){
 
     B2 =  approx_bezier3(tableau, 0, (int)n);
     
-    if (((B2.C0.x - P1.x)<= 0.00001) && (B2.C0.y - P1.y)<= 0.00001 && (B2.C1.x - P2.x)<= 0.00001 && (B2.C1.y - P2.y)<= 0.00001 && (B2.C2.x - P3.x)<= 0.00001 && (B2.C2.y - P3.y)<= 0.00001 && (B2.C3.x - P4.x)<= 0.00001 && (B2.C3.y - P4.y)<= 0.00001){
+    if (((B2.C0.x - P1.x)<= 0.00001) && (B2.C0.y - P1.y)<= 0.00001 && 
+        (B2.C1.x - P2.x)<= 0.00001 && (B2.C1.y - P2.y)<= 0.00001 && 
+        (B2.C2.x - P3.x)<= 0.00001 && (B2.C2.y - P3.y)<= 0.00001 && 
+        (B2.C3.x - P4.x)<= 0.00001 && (B2.C3.y - P4.y)<= 0.00001){
         printf("Test cas n>=3 PASS\n");
     } else {
         printf("Test cas n>=3 FAIL\n");

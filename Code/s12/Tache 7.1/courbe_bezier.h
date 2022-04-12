@@ -5,12 +5,14 @@
 #include <math.h>
 #include "listes_chainees_points.h"
 
+// Type courbe de bezier de degre 2
 typedef struct Bezier2 {
     Point C0;
     Point C1;
     Point C2;
 } Bezier2 ;
 
+// Type courbe de bezier de degre 3
 typedef struct Bezier3 {
     Point C0;
     Point C1;

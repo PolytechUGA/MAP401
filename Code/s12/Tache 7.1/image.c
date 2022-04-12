@@ -216,19 +216,17 @@ void ecrire_image(Image I)
 	UINT h = hauteur_image(I);
 	for (UINT i = 1 ; i<=h; i++){
 		for (UINT k = 1 ; k<=l ; k++){
-			if(get_pixel_image(I, k, i) == BLANC){
-				printf(" ");
+			if(get_pixel_image(I, k, i) == BLANC){	// Cette fonction permet d'écrire une image dans le terminal
+				printf(" ");			// Si le pixel est blanc, on affiche un espace
 			} else {
-				printf("x");
+				printf("x");			// Sinon, on affiche un x à la place des pixels noirs
 			}
 		}
 		printf("\n");
 	}
-	
-	/** PARTIE A COMPLETER **/	
 }
 
-/* calculer l'image "negatif" de l'image I */
+/* calcule l'image "negatif" de l'image I */
 /* l'image I n'est pas modifiee */
 Image negatif_image(Image I)
 {
@@ -237,14 +235,13 @@ Image negatif_image(Image I)
 	UINT h = hauteur_image(I);
 	neg = creer_image(l, h);
 	for (UINT i = 1 ; i<=h; i++){
-		for (UINT k = 1 ; k<=l ; k++){
+		for (UINT k = 1 ; k<=l ; k++){     // On parcours chaque pixels de l'image et on inverse sa couleur
 			if(get_pixel_image(I, k, i) == BLANC){
-				set_pixel_image(I, k, i, NOIR);
+				set_pixel_image(neg, k, i, NOIR);	// Si le pixel est blanc, on le remplace par un Noir
 			} else {
-				set_pixel_image(I, k, i, BLANC);
+				set_pixel_image(neg, k, i, BLANC); // Sinon, on fait l'inverse 
 			}
 		}
 	}
 	return neg;
-	/** PARTIE A COMPLETER **/
 }

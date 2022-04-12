@@ -8,8 +8,13 @@
 #include "geom2d.h"
 #include "liste_contour_bezier.h"
 
+
+// écrit dans un fichier la sortie EPS pour la tâche 4. Cette fonction produit une sortie EPS d'un seul contour
+// avec une liste de point
 void ecriture_fichier_EPS(FILE *f, int mode, Image Image, Liste_Point L);
 
+// écrit dans un fichier la sortie EPS pour la tâche 5. Cette fonction produit une sortie EPS de plusieurs contour
+// avec une liste de contours
 void ecriture_fichier_EPS_tache5(FILE *f, int mode, Image Image, Liste_Contour L);
 
 // On a modifié la fonction ci-dessus pour qu'elle recoive une liste de liste de courbe

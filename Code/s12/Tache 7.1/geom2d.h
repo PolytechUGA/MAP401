@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <math.h>
-// probleme unkonw type Point ou tableau_point
 
 
 typedef struct Vecteur {
@@ -46,14 +45,16 @@ double norme_vecteur (Vecteur V);
 // vecteur correspondant au bipoint AB ∗/
 Vecteur vect_bipoint ( Point A, Point B ) ;
 
-
+// Renvoie le vecteur AB
 Point point_bipoint ( Point A, Point B);
 
 // distance entre P1 et P2
 double distance_entre_points(Point P1, Point P2);
 
+// Renvoie Vrai si les coordonnees de P1 sont egales a celles de P2 et Faux sinon.
 int Points_egaux(Point P1, Point P2);
 
+// Renvoie la distance entre le point P et le segment AB.
 double distance_point_segment(Point P, Point A, Point B);
 
 #endif

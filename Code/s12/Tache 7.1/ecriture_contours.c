@@ -9,6 +9,7 @@ void ecrire_liste_point_fichier( Liste_Point L, FILE *f){
         return;
     }
     for (tmp = L.first; tmp->suiv != NULL; tmp = tmp->suiv){
+        // Parcours chaque éléments de la liste et les écrits dans un fichier
         fprintf(f, " %f %f\n", tmp->data.x, tmp->data.y);
     }
 }
@@ -22,25 +23,11 @@ void ecrire_contour_fichier_contours(Liste_Contour L, FILE *f){
         return;
     }
     for (tmp_ = L.first; tmp_ != NULL; tmp_ = tmp_->suiv){
+        // écrit chaque contours en utilisant la fontion précédente
         fprintf(f, "\n\n");
         ecrire_liste_point_fichier(tmp_->contour, f);
     }
 }
-
-
-void affichage_ecran (Liste_Contour L){
-    int nb_c = taille_liste_contours(L);
-    int nb_segments = 0; 
-    Cellule_Liste_Contour *tmp_ = L.first;
-    while (tmp_ != NULL){
-        nb_segments = nb_segments + nombre_segment(tmp_->contour);
-        tmp_ = tmp_->suiv;
-    }
-    printf( "\nNombre de contours : %d \n", nb_c);
-    printf( "Nombre de segments : %d \n", nb_segments);
-
-}
-
 
 
 void ecrire_contour(Liste_Point L)
@@ -56,4 +43,18 @@ void ecrire_contour(Liste_Point L)
     }
     printf( " ] \n" ) ;
     free (TP.tab );
+}
+
+void affichage_ecran (Liste_Contour L){
+    int nb_c = taille_liste_contours(L);
+    int nb_segments = 0; 
+    Cellule_Liste_Contour *tmp_ = L.first;
+    while (tmp_ != NULL){
+        // Calcul le nombre de segments dans une liste de contours
+        nb_segments = nb_segments + nombre_segment(tmp_->contour);
+        tmp_ = tmp_->suiv;
+    }
+    printf( "\nNombre de contours : %d \n", nb_c);
+    printf( "Nombre de segments : %d \n", nb_segments);
+
 }

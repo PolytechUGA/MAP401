@@ -25,7 +25,7 @@ int main (int argc, char* argv[]){
     I = lire_fichier_image(argv[1]);
     Image I_Masque = cree_image_masque(I);
     L = extraction_des_contours(I, I_Masque);
-
+    supprimer_image(&I_Masque);
     for (Cellule_Liste_Contour *tmp_contour = L.first; tmp_contour != NULL ; tmp_contour = tmp_contour->suiv){
         tmp_contour->contour = algo_Douglas_Peucker(tmp_contour->contour , 0, tmp_contour->contour.taille-1, d);
     }
@@ -39,6 +39,8 @@ int main (int argc, char* argv[]){
         return -2;
     }
     ecriture_fichier_EPS_tache5(f_EPS, mode, I, L);
+    supprimer_image(&I);
+    supprimer_liste_Contour(L);
     fclose(f_EPS);
     return 1;
 }

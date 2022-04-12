@@ -57,11 +57,17 @@ int Points_egaux(Point P1, Point P2){
 }
 
 double distance_point_segment(Point P, Point A, Point B){
+    // Si A et B sont confondu alors la distance entre P
+    // et AB est la distance entre P et A.
     if (Points_egaux(A, B)){
         return distance_entre_points(A, P);
-    } else {
-        
     }
+    // On se sert de Q, la projection orthogonale de P
+    // sur la droite passant par A et B. Si Q est a gauche
+    // du segment AB alors la distance P AB est celle entre P et A.
+    // Symetriquement si Q est à droite de AB alors la distance est PB.
+    // Si Q appartient a AB, alors la distance est celle entre P et Q,
+    // pour laquelle on nous donne la formule : Q = A + lambda(B - A)
     Vecteur AP = vect_bipoint(A,P);
     Vecteur AB = vect_bipoint(A,B);
     double lambda = produit_scalaire (AP, AB) / produit_scalaire (AB, AB);

@@ -37,8 +37,7 @@ INCLUDEOPTS = -I$(INCDIR)
 COMPILOPTS = -g -Wall $(INCLUDEOPTS)
 
 # liste des executables
-EXECUTABLES = distance_pts_seg ecrire_liste_contours simplification_par_segment simplification_par_bezier2 test1.1_tache7 test2.1_tache7 simplification_par_bezier3
-
+EXECUTABLES = distance_pts_seg ecrire_liste_contours simplification_par_segment simplification_par_bezier2 test1.1_tache7 test2.1_tache7 simplification_par_bezier3 test_contour test_geom test_image test_EPS
 
 #############################################################################
 # definition des regles
@@ -192,6 +191,34 @@ test2.1_tache7.o : test2.1_tache7.c calcul_contour.h geom2d.h listes_chainees_po
 	@echo "---------------------------------------------"
 	$(CC) -c $(COMPILOPTS) $<
 
+test_geom.o : test_geom.c  geom2d.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test_contour.o : test_contour.c  calcul_contour.h ecriture_contours.h image.h listes_chainees_contours.h listes_chainees_points.h geom2d.h types_macros.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test_image.o : test_image.c  image.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
+test_EPS.o : test_EPS.c  sortie_EPS.h calcul_contour.h ecriture_contours.h image.h listes_chainees_contours.h listes_chainees_points.h geom2d.h types_macros.h
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module test1.1_tache7  "
+	@echo "---------------------------------------------"
+	$(CC) -c $(COMPILOPTS) $<
+
 ########################################################
 # regles explicites de creation des executables
 
@@ -249,6 +276,33 @@ simplification_par_bezier3 : simplification_par_bezier3.o Douglas_Peucker.o imag
 	@echo "---------------------------------------------"
 	$(CC) $^ $(LDOPTS) -o $@
 
+test_geom : test_geom.o  geom2d.o
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+test_contour : test_contour.o  calcul_contour.o ecriture_contours.o image.o listes_chainees_contours.o listes_chainees_points.o geom2d.o
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+test_image : test_image.o image.o
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
+
+test_EPS : test_EPS.o sortie_EPS.o calcul_contour.o ecriture_contours.o image.o listes_chainees_contours.o listes_chainees_points.o geom2d.o
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Creation de l'executable "$@
+	@echo "---------------------------------------------"
+	$(CC) $^ $(LDOPTS) -o $@
 
 # regle pour "nettoyer" le r�pertoire
 clean:

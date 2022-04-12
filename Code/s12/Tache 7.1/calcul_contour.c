@@ -2,6 +2,7 @@
 
 Orientation tourner_a_gauche(Orientation Orient){
     switch (Orient){
+    // On modifie l'orientation en fonction de celle de base
         case NORD:
             return OUEST;
         case EST:
@@ -14,6 +15,7 @@ Orientation tourner_a_gauche(Orientation Orient){
 }
 
 Orientation tourner_a_droite(Orientation Orient){
+    // On modifie l'orientation en fonction de celle de base
     switch(Orient){
         case NORD:
             return EST;
@@ -26,15 +28,20 @@ Orientation tourner_a_droite(Orientation Orient){
     }
 }
 
+
+
 Point trouver_pixel_depart(Image I){
     Point P;
     for (int i = 1 ; i<= hauteur_image(I); i++){
         for (int k  = 1 ; k <= largeur_image(I); k++){
+            // Pour chaque pixel de l'image
             if (i==1 && get_pixel_image(I, k, i)){
+                // Si On est sur la première ligne, et qu'on troue un pixel noir, on le renvoie
                 P = set_point(k,i);
                 return P;
             }
             else if (get_pixel_image(I, k, i) == NOIR && get_pixel_image(I, k, i-1) == BLANC){
+                // Si on trouve un pixel noir avec un pixel blanc au dessus on le renvoie
                 P = set_point(k,i);
                 return P;
             }
@@ -175,7 +182,6 @@ Liste_Point calcul_contour_I_masque(Image I, Image I_Masque, double k, double i)
 }
 
 Liste_Contour extraction_des_contours(Image I, Image I_Masque){
-    // Point first_pixel= set_point(0,0);
     Liste_Contour L_Contour = creer_liste_Contour_vide();
     Liste_Point L_Point = creer_liste_Point_vide();
     int l,h;
