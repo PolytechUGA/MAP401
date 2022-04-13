@@ -2,6 +2,7 @@
     "files.associations": {
         "types_macros.h": "c",
         "listes_chainees_contours.h": "c",
-        "sortie_eps.h": "c"
+        "sortie_eps.h": "c",
+        "geom2d.h": "c"
     }
 }

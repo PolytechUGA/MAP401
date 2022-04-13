@@ -64,4 +64,13 @@ Tâche 5 : Extraction des contours d'une image
     ainsi d'écrire dans le fichier une image en format EPS.
 
 Tâche 6 : Simplification de contour par segment
-    
+    Tâche 6.1:
+        Pour cette tâche, nous avons mis à jour le module geom2d pour y intégrer une fonction distance_point_segment
+        qui calcule la distance entre un point (donné en argument) et un segment dont les deux extrémités sont données 
+        en paramètre.
+
+        L'exécutable est distance_pts_seg.c et permet à l'utilisateur d'entrer les coordonnées de 3 points pour calculer
+        la distance entre le premier et le segment formé par les deux autres.
+    Tâche 6.2:
+        Pour cette tâche nous avons codé le module Douglas_Peucker qui comporte l'algorithme du même nom. Nous avons créer le module
+        liste_chainees_contours, qui gère les listes chainees de contours.
