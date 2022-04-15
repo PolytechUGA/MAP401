@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "types_macros.h": "c",
+        "listes_chainees_contours.h": "c",
+        "sortie_eps.h": "c",
+        "geom2d.h": "c",
+        "ecriture_contours.h": "c",
+        "douglas_peucker.h": "c",
+        "liste_contour_bezier.h": "c",
+        "listes_chainees_bezier.h": "c",
+        "courbe_bezier.h": "c",
+        "calcul_contour.h": "c"
+    }
+}

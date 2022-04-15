@@ -1,0 +1,73 @@
+
+Nous avons créer un Makefile qui permet de compiler les executables de toutes les tâches. 
+Il créer les fichiers objets ".o" et les éxecutables. Ecrivez dans le terminal "make clean"
+pour réinitialiser le dossier en supprimant tous les ".o" et les executables. Ecrivez "make"
+pour compiler tout le dossier, et ainsi avoir accés aux éxecutables. Tous les programmes s'executent
+via des lignes de commandes entrées dans le terminal.
+
+
+Manuel Utilisateur :
+
+Tâche 5 : 
+    Fichiers sources:
+        -ecrire_liste_contours.c
+        -calcul_contour (.c/.h)
+        -sortie_EPS (.c/.h)
+    
+    Données en entrée (mis en parametre derrière l'executable dans la ligne de commande):
+        Tache5.1 : 
+            1/image.pbm 
+            2/fichier de sortie.txt
+        Tache5.2 :
+            1/image.pbm
+            2/fichier de sortie.EPS 
+            3/mode (0=strocke ou 1=fill)
+    Résultats en sortie:
+        Tache5.1 : 
+            fichier de sortie.txt (dans lequel sont écrit les coordonnées de tous les points de chaque contours de l'image)
+        Tache5.2 :
+            fichier de sortie.EPS qui permet de visualiser l'image donnée en paramêtre avec la commande "gv fichier de sortie.EPS"
+    Ligne de commande pour executer cette tâche:
+        Tâche 5.1:  Renvoie la liste des points dans le fichier txt
+        schéma général:
+            ./ecrire_liste_contours image.pbm  fichier.txt
+        exemple :
+            ./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.txt
+
+        Tâche 5.2: Ecrit un fichier EPS pour les arguments données
+        schéma général:
+            ./ecrire_liste_contours image.pbm  fichier.txt mode
+        exemples :
+            ./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.EPS 0
+            ./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.EPS 1
+
+Tâche 6 : 
+    Fichiers sources:
+    
+    
+    Données en entrée:
+
+
+    Résultats en sortie:
+
+    
+    Execution du programme:
+
+
+Tâche 7 : 
+    Fichiers sources:
+    
+    
+    Données en entrée:
+
+
+    Résultats en sortie:
+
+    
+    Execution du programme:
+
+
+
+
+./simplification_par_bezier2 images/TACHE7/deux-des-pleins.pbm 2 1 images/SORTIE_TACHE7/Tache7.1_deux-des-pleins_d2_m1.EPS
+./simplification_par_bezier2 images/TACHE7/deux-des-pleins.pbm 1 0 images/SORTIE_TACHE7/Tache7.1_deux-des-pleins_d1_m0.EPS

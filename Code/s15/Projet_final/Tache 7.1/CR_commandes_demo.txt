@@ -1,0 +1,37 @@
+Tâche 1:
+./test_image image.pbm
+./test_image image_test/caractere2.pbm
+
+Tâche 2:
+./test_geom
+
+Tâche 3:
+./test_contour image.pbm
+./test_contour image_test/Images_tache3/image_ex_poly.pbm
+
+Tâche 4:
+./test_EPS image.pbm image.EPS mode
+./test_EPS image_test/Images_tache4/chat.pbm image_test/Images_tache4/chat.EPS 1
+./test_EPS image_test/Images_tache4/chat.pbm image_test/Images_tache4/chat.EPS 0
+
+Tâche 5.1:  Renvoie la liste des points dans le fichier txt
+./ecrire_liste_contours image.pbm  fichier.txt 
+./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.txt
+
+Tâche 5.2: Ecrit un fichier EPS pour les arguments données
+./ecrire_liste_contours image.pbm  fichier.txt mode
+./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.EPS 0
+./ecrire_liste_contours image_test/Image_tache5/Charlot.pbm image_test/Image_tache5/Charlot.EPS 1
+
+
+Tâche 6:
+
+
+
+Tâche 7:
+
+
+
+
+
+

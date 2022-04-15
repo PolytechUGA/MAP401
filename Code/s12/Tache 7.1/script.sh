@@ -19,7 +19,7 @@ ch_T_6="images/TACHE6/"
 ch_T_7="images/TACHE7/"
 ch_T_8="images/TACHE8/"
 
-
+# Chemins Sortie
 ch_T_3_S="images/SORTIE_TACHE3/"
 ch_T_4_S="images/SORTIE_TACHE4/"
 ch_T_5_S="images/SORTIE_TACHE5/"
